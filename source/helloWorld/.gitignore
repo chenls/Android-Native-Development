@@ -1,0 +1,5 @@
+libs
+obj
+jni/helloWorld.o
+jni/helloWorld.i
+jni/helloWorld.s
