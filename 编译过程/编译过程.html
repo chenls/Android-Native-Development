@@ -1,0 +1,506 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>编译过程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="编译过程.html">
+            
+                <a href="编译过程.html">
+            
+                    
+                    编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >编译过程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#cc&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><b>1. </b>C/C++&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;</a></li><ul><li><span class="title-icon "></span><a href="#&#x524D;&#x8A00;"><b>1.1. </b>&#x524D;&#x8A00;</a></li><li><span class="title-icon "></span><a href="#hello-world&#x7F16;&#x8BD1;"><b>1.2. </b>Hello World&#x7F16;&#x8BD1;</a></li><ul><li><span class="title-icon "></span><a href="#&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1"><b>1.2.1. </b>&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1</a></li><li><span class="title-icon "></span><a href="#&#x6C47;&#x7F16;as"><b>1.2.2. </b>&#x6C47;&#x7F16;as</a></li><li><span class="title-icon "></span><a href="#&#x94FE;&#x63A5;collect2"><b>1.2.3. </b>&#x94FE;&#x63A5;collect2</a></li></ul><li><span class="title-icon "></span><a href="#&#x5C0F;&#x63D2;&#x66F2;"><b>1.3. </b>&#x5C0F;&#x63D2;&#x66F2;</a></li><li><span class="title-icon "></span><a href="#&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;"><b>1.4. </b>&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;</a></li><ul><li><span class="title-icon "></span><a href="#&#x9884;&#x5904;&#x7406;"><b>1.4.1. </b>&#x9884;&#x5904;&#x7406;</a></li><li><span class="title-icon "></span><a href="#&#x7F16;&#x8BD1;"><b>1.4.2. </b>&#x7F16;&#x8BD1;</a></li><li><span class="title-icon "></span><a href="#&#x6C47;&#x7F16;"><b>1.4.3. </b>&#x6C47;&#x7F16;</a></li><li><span class="title-icon "></span><a href="#&#x94FE;&#x63A5;"><b>1.4.4. </b>&#x94FE;&#x63A5;</a></li></ul><li><span class="title-icon "></span><a href="#&#x603B;&#x7ED3;"><b>1.5. </b>&#x603B;&#x7ED3;</a></li><li><span class="title-icon "></span><a href="#one-more-thing&#xFF1A;android-ndk&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><b>1.6. </b>One more thing&#xFF1A;Android NDK&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;</a></li><ul><li><span class="title-icon "></span><a href="#&#x793A;&#x4F8B;&#x4EE3;&#x7801;"><b>1.6.1. </b>&#x793A;&#x4F8B;&#x4EE3;&#x7801;</a></li><li><span class="title-icon "></span><a href="#clang&#x7684;&#x4F7F;&#x7528;"><b>1.6.2. </b>clang&#x7684;&#x4F7F;&#x7528;</a></li><li><span class="title-icon "></span><a href="#ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;"><b>1.6.3. </b>ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;</a></li></ul></ul></ul></div><a href="#cc&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="cc&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><a name="cc&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#cc&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>1. C/C++&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;</h1>
+<h2 id="&#x524D;&#x8A00;"><a name="&#x524D;&#x8A00;" class="anchor-navigation-ex-anchor" href="#&#x524D;&#x8A00;"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. &#x524D;&#x8A00;</h2>
+<p>C/C++&#x4EE3;&#x7801;&#x662F;&#x5982;&#x4F55;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x786C;&#x4EF6;&#x4E0A;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#x5462;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&quot;Hello World&quot;&#x7A0B;&#x5E8F;&#x8BF4;&#x8D77;&#x3002;</p>
+<h2 id="hello-world&#x7F16;&#x8BD1;"><a name="hello-world&#x7F16;&#x8BD1;" class="anchor-navigation-ex-anchor" href="#hello-world&#x7F16;&#x8BD1;"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. Hello World&#x7F16;&#x8BD1;</h2>
+<p>&#x6709;&#x4E2A;&#x6D41;&#x4F20;&#x633A;&#x5E7F;&#x7684;&#x7B11;&#x8BDD;&#xFF1A;</p>
+<p>&#x67D0;&#x7A0B;&#x5E8F;&#x5458;&#x5BF9;&#x4E66;&#x6CD5;&#x5341;&#x5206;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x9000;&#x4F11;&#x540E;&#x51B3;&#x5B9A;&#x5728;&#x8FD9;&#x65B9;&#x9762;&#x6709;&#x6240;&#x5EFA;&#x6811;&#x3002;&#x4E8E;&#x662F;&#x82B1;&#x91CD;&#x91D1;&#x8D2D;&#x4E70;&#x4E86;&#x4E0A;&#x7B49;&#x7684;&#x6587;&#x623F;&#x56DB;&#x5B9D;&#x3002;&#x4E00;&#x65E5;&#xFF0C;&#x996D;&#x540E;&#x7A81;&#x751F;&#x96C5;&#x5174;&#xFF0C;&#x4E00;&#x756A;&#x78E8;&#x58A8;&#x62DF;&#x7EB8;&#xFF0C;&#x5E76;&#x70B9;&#x4E0A;&#x4E86;&#x4E0A;&#x597D;&#x7684;&#x6A80;&#x9999;&#xFF0C;&#x9887;&#x6709;&#x738B;&#x7FB2;&#x4E4B;&#x98CE;&#x8303;&#xFF0C;&#x53C8;&#x5177;&#x989C;&#x771F;&#x537F;&#x6C14;&#x52BF;&#xFF0C;&#x5B9A;&#x795E;&#x7247;&#x523B;&#xFF0C;&#x6CFC;&#x58A8;&#x6325;&#x6BEB;&#xFF0C;&#x90D1;&#x91CD;&#x5730;&#x5199;&#x4E0B;&#xFF1A;Hello World</p>
+<p>C&#x4EE3;&#x7801;&#x7684;&quot;Hello World&quot;&#xFF0C;<a href="https://github.com/chenls/Android-Native-Development/tree/main/source/helloWorld/jni/helloWorld.c" target="_blank">helloWorld.c</a> &#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-c"><span class="token comment">/*include head file*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token comment">/*the main function*/</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World!\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span> <span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5148;&#x4F7F;&#x7528;<code>gcc</code>&#x6765;&#x7F16;&#x8BD1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ gcc helloWorld.c 
+$ ./a.out 
+Hello World<span class="token operator">!</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E00;&#x6C14;&#x5475;&#x6210;&#xFF0C;&quot;Hello World!&quot; &#x5DF2;&#x7ECF;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;&#x90A3;&#x4E48;&#x8FD9;&#x91CC;&#x9762;&#x53D1;&#x751F;&#x4E86;&#x90A3;&#x4E9B;&#x4E8B;&#x60C5;&#x5462;&#xFF1F;</p>
+<p>&#x4E07;&#x4E8B;&#x6765;&#x6C42;help&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;<code>gcc --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x8BF4;&#x660E;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x6761;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">-v         Display the programs invoked by the compiler.
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x52A0;<code>-v</code>&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x7F16;&#x8BD1;&#x8C03;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x66F4;&#x591A;&#x5173;&#x4E8E;<code>gcc -v</code>&#x7684;&#x5256;&#x6790;&#x53EF;&#x53C2;&#x8003;&#xFF1A;<a href="https://www.cnblogs.com/kelamoyujuzhen/p/9411002.html" target="_blank">&#x5256;&#x6790;gcc -v&#x8F93;&#x51FA;</a></p>
+<p>&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ gcc helloWorld.c -o helloWorld -v
+Using built-in specs.
+<span class="token assign-left variable">COLLECT_GCC</span><span class="token operator">=</span>gcc
+<span class="token assign-left variable">COLLECT_LTO_WRAPPER</span><span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
+<span class="token assign-left variable">OFFLOAD_TARGET_NAMES</span><span class="token operator">=</span>nvptx-none
+<span class="token assign-left variable">OFFLOAD_TARGET_DEFAULT</span><span class="token operator">=</span><span class="token number">1</span>
+Target: x86_64-linux-gnu
+Configured with: <span class="token punctuation">..</span>/src/configure -v --with-pkgversion<span class="token operator">=</span><span class="token string">&apos;Uos 8.3.0.3-3+rebuild&apos;</span> --with-bugurl<span class="token operator">=</span>file:///usr/share/doc/gcc-8/README.Bugs --enable-languages<span class="token operator">=</span>c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix<span class="token operator">=</span>/usr --with-gcc-major-version-only --program-suffix<span class="token operator">=</span>-8 --program-prefix<span class="token operator">=</span>x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir<span class="token operator">=</span>/usr/lib --without-included-gettext --enable-threads<span class="token operator">=</span>posix --libdir<span class="token operator">=</span>/usr/lib --enable-nls --enable-bootstrap --enable-clocale<span class="token operator">=</span>gnu --enable-libstdcxx-debug --enable-libstdcxx-time<span class="token operator">=</span>yes --with-default-libstdcxx-abi<span class="token operator">=</span>new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc<span class="token operator">=</span>auto --enable-multiarch --disable-werror --with-arch-32<span class="token operator">=</span>i686 --with-abi<span class="token operator">=</span>m64 --with-multilib-list<span class="token operator">=</span>m32,m64,mx32 --enable-multilib --with-tune<span class="token operator">=</span>generic --enable-offload-targets<span class="token operator">=</span>nvptx-none --without-cuda-driver --enable-checking<span class="token operator">=</span>release --build<span class="token operator">=</span>x86_64-linux-gnu --host<span class="token operator">=</span>x86_64-linux-gnu --target<span class="token operator">=</span>x86_64-linux-gnu
+Thread model: posix
+gcc version <span class="token number">8.3</span>.0 <span class="token punctuation">(</span>Uos <span class="token number">8.3</span>.0.3-3+rebuild<span class="token punctuation">)</span> 
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+ /usr/lib/gcc/x86_64-linux-gnu/8/cc1 -quiet -v -imultiarch x86_64-linux-gnu helloWorld.c -quiet -dumpbase helloWorld.c -mtune<span class="token operator">=</span>generic -march<span class="token operator">=</span>x86-64 -auxbase helloWorld -version -o /tmp/ccfIwQTj.s
+GNU C17 <span class="token punctuation">(</span>Uos <span class="token number">8.3</span>.0.3-3+rebuild<span class="token punctuation">)</span> version <span class="token number">8.3</span>.0 <span class="token punctuation">(</span>x86_64-linux-gnu<span class="token punctuation">)</span>
+        compiled by GNU C version <span class="token number">8.3</span>.0, GMP version <span class="token number">6.1</span>.2, MPFR version <span class="token number">4.0</span>.2, MPC version <span class="token number">1.1</span>.0, isl version isl-0.20-GMP
+
+GGC heuristics: --param ggc-min-expand<span class="token operator">=</span><span class="token number">100</span> --param ggc-min-heapsize<span class="token operator">=</span><span class="token number">131072</span>
+ignoring nonexistent directory <span class="token string">&quot;/usr/local/include/x86_64-linux-gnu&quot;</span>
+ignoring nonexistent directory <span class="token string">&quot;/usr/lib/gcc/x86_64-linux-gnu/8/../../../../x86_64-linux-gnu/include&quot;</span>
+<span class="token comment">#include &quot;...&quot; search starts here:</span>
+<span class="token comment">#include &lt;...&gt; search starts here:</span>
+ /usr/lib/gcc/x86_64-linux-gnu/8/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-linux-gnu/8/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C17 <span class="token punctuation">(</span>Uos <span class="token number">8.3</span>.0.3-3+rebuild<span class="token punctuation">)</span> version <span class="token number">8.3</span>.0 <span class="token punctuation">(</span>x86_64-linux-gnu<span class="token punctuation">)</span>
+        compiled by GNU C version <span class="token number">8.3</span>.0, GMP version <span class="token number">6.1</span>.2, MPFR version <span class="token number">4.0</span>.2, MPC version <span class="token number">1.1</span>.0, isl version isl-0.20-GMP
+
+GGC heuristics: --param ggc-min-expand<span class="token operator">=</span><span class="token number">100</span> --param ggc-min-heapsize<span class="token operator">=</span><span class="token number">131072</span>
+Compiler executable checksum: b0aa96b3fb90562a90ec754591a6a020
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+ as -v --64 -o /tmp/ccUwhs9h.o /tmp/ccfIwQTj.s
+GNU assembler version <span class="token number">2.31</span>.1 <span class="token punctuation">(</span>x86_64-linux-gnu<span class="token punctuation">)</span> using BFD version <span class="token punctuation">(</span>GNU Binutils <span class="token keyword">for</span> Uos<span class="token punctuation">)</span> <span class="token number">2.31</span>.1
+<span class="token assign-left variable">COMPILER_PATH</span><span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
+<span class="token assign-left variable">LIBRARY_PATH</span><span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/lib/:/lib/x86_64-linux-gnu/:/lib/<span class="token punctuation">..</span>/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/<span class="token punctuation">..</span>/lib/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/:/lib/:/usr/lib/
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt<span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt<span class="token operator">=</span>-fresolution<span class="token operator">=</span>/tmp/ccXGG9qg.res -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc_s -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style<span class="token operator">=</span>gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o helloWorld /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/lib -L/lib/x86_64-linux-gnu -L/lib/<span class="token punctuation">..</span>/lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/<span class="token punctuation">..</span>/lib -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span> /tmp/ccUwhs9h.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crtn.o
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+</code></pre>
+<p>&#x4FE1;&#x606F;&#x592A;&#x591A;&#xFF0C;&#x6765;&#x6D88;&#x5316;&#x4E00;&#x4E0B;&#xFF0C;&#x5254;&#x9664;&#x989D;&#x5916;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;3&#x4E2A;&#x6B65;&#x9AA4;<code>cc1</code>&#x3001;<code>as</code>&#x3001;<code>collect2</code>&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h3 id="&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1"><a name="&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1" class="anchor-navigation-ex-anchor" href="#&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1"><i class="fa fa-link" aria-hidden="true"></i></a>1.2.1. &#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;cc1</h3>
+<p>&#x5728;&#x8FD9;&#x6BB5;&#x4FE1;&#x606F;&#x4E2D;&#x641C;&#x7D22;<code>helloWorld.c</code>&#xFF0C;&#x4F1A;&#x770B;&#x5230;:</p>
+<pre class="language-"><code class="lang-bash">/usr/lib/gcc/x86_64-linux-gnu/8/cc1 -quiet -v -imultiarch x86_64-linux-gnu helloWorld.c -quiet -dumpbase helloWorld.c -mtune<span class="token operator">=</span>generic -march<span class="token operator">=</span>x86-64 -auxbase helloWorld -version -o /tmp/ccfIwQTj.s
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>cc1</code>&#x5C06;<code>helloWorld.c</code>&#x7F16;&#x8BD1;&#x751F;&#x6210;<code>ccfIwQTj.s</code>&#x3002;</p>
+<h3 id="&#x6C47;&#x7F16;as"><a name="&#x6C47;&#x7F16;as" class="anchor-navigation-ex-anchor" href="#&#x6C47;&#x7F16;as"><i class="fa fa-link" aria-hidden="true"></i></a>1.2.2. &#x6C47;&#x7F16;as</h3>
+<p>&#x7EE7;&#x7EED;&#x67E5;&#x627E;<code>ccfIwQTj.s</code>&#xFF0C;&#x4F1A;&#x770B;&#x5230;:</p>
+<pre class="language-"><code class="lang-bash">as -v --64 -o /tmp/ccUwhs9h.o /tmp/ccfIwQTj.s
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>as</code>&#x5C06;<code>ccfIwQTj.s</code>&#x6C47;&#x7F16;&#x751F;&#x6210;<code>ccfIwQTj.o</code>&#x3002;</p>
+<h3 id="&#x94FE;&#x63A5;collect2"><a name="&#x94FE;&#x63A5;collect2" class="anchor-navigation-ex-anchor" href="#&#x94FE;&#x63A5;collect2"><i class="fa fa-link" aria-hidden="true"></i></a>1.2.3. &#x94FE;&#x63A5;collect2</h3>
+<p>&#x7EE7;&#x7EED;&#x67E5;&#x627E;<code>ccfIwQTj.o</code>&#xFF0C;&#x4F1A;&#x770B;&#x5230;:</p>
+<pre class="language-"><code class="lang-bash">/usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt<span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt<span class="token operator">=</span>-fresolution<span class="token operator">=</span>/tmp/ccXGG9qg.res -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc_s -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc -plugin-opt<span class="token operator">=</span>-pass-through<span class="token operator">=</span>-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style<span class="token operator">=</span>gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o helloWorld /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/lib -L/lib/x86_64-linux-gnu -L/lib/<span class="token punctuation">..</span>/lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/<span class="token punctuation">..</span>/lib -L/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span> /tmp/ccUwhs9h.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crtn.o
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>collect2</code>&#x5C06;<code>ccUwhs9h.o</code>&#x548C;&#x5176;&#x5B83;&#x8BB8;&#x591A;&#x6587;&#x4EF6;&#x4E00;&#x8D77;&#x94FE;&#x63A5;&#x751F;&#x6210;&#x4E86;<code>helloWorld</code>&#x3002;</p>
+<h2 id="&#x5C0F;&#x63D2;&#x66F2;"><a name="&#x5C0F;&#x63D2;&#x66F2;" class="anchor-navigation-ex-anchor" href="#&#x5C0F;&#x63D2;&#x66F2;"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. &#x5C0F;&#x63D2;&#x66F2;</h2>
+<p>&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x5927;&#x4F53;&#x5206;&#x4E3A;4&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;&#x9884;&#x5904;&#x7406;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x6C47;&#x7F16;&#xFF0C;&#x94FE;&#x63A5;&#x3002;&#x53EF;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x53D1;&#x73B0;<code>gcc -v</code>&#x53EA;&#x6709;&#x4F7F;&#x7528;&#x4E86;&#x4E09;&#x6B65;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x600E;&#x4E48;&#x56DE;&#x4E8B;&#x5462;&#xFF1F;</p>
+<p>&#x5728;<a href="https://blog.csdn.net/benpaobagzb/article/details/48442885" target="_blank">GCC&#x7F16;&#x8BD1;&#x7684;&#x80CC;&#x540E;( &#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1; &#x6C47;&#x7F16;&#x548C;&#x94FE;&#x63A5; )</a>&#x4E2D;&#x63D0;&#x5230;&#xFF1A;</p>
+<blockquote>
+<p>&#x5B9E;&#x9645;&#x4E0A;gcc&#x5728;&#x8FD9;&#x91CC;&#x662F;&#x8C03;&#x7528;&#x4E86;cpp&#x7684;(&#x867D;&#x7136;&#x6211;&#x4EEC;&#x901A;&#x8FC7;gcc&#x7684;-v&#x4EC5;&#x770B;&#x5230;cc1)&#xFF0C;cpp&#x5373;The C Preprocessor&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x9884;&#x5904;&#x7406;&#x5B8F;&#x5B9A;&#x4E49;&#x3001;&#x6587;&#x4EF6;&#x5305;&#x542B;&#x3001;&#x6761;&#x4EF6;&#x7F16;&#x8BD1;&#x7B49;&#x3002;</p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;<code>cpp</code>&#x6765;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C;&#x540C;&#x6837;&#x52A0;&quot;-v&quot;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ cpp helloWorld.c -o helloWorld.i -v
+Using built-in specs.
+<span class="token assign-left variable">COLLECT_GCC</span><span class="token operator">=</span>cpp
+<span class="token assign-left variable">OFFLOAD_TARGET_NAMES</span><span class="token operator">=</span>nvptx-none
+<span class="token assign-left variable">OFFLOAD_TARGET_DEFAULT</span><span class="token operator">=</span><span class="token number">1</span>
+Target: x86_64-linux-gnu
+Configured with: <span class="token punctuation">..</span>/src/configure -v --with-pkgversion<span class="token operator">=</span><span class="token string">&apos;Uos 8.3.0.3-3+rebuild&apos;</span> --with-bugurl<span class="token operator">=</span>file:///usr/share/doc/gcc-8/README.Bugs --enable-languages<span class="token operator">=</span>c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix<span class="token operator">=</span>/usr --with-gcc-major-version-only --program-suffix<span class="token operator">=</span>-8 --program-prefix<span class="token operator">=</span>x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir<span class="token operator">=</span>/usr/lib --without-included-gettext --enable-threads<span class="token operator">=</span>posix --libdir<span class="token operator">=</span>/usr/lib --enable-nls --enable-bootstrap --enable-clocale<span class="token operator">=</span>gnu --enable-libstdcxx-debug --enable-libstdcxx-time<span class="token operator">=</span>yes --with-default-libstdcxx-abi<span class="token operator">=</span>new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc<span class="token operator">=</span>auto --enable-multiarch --disable-werror --with-arch-32<span class="token operator">=</span>i686 --with-abi<span class="token operator">=</span>m64 --with-multilib-list<span class="token operator">=</span>m32,m64,mx32 --enable-multilib --with-tune<span class="token operator">=</span>generic --enable-offload-targets<span class="token operator">=</span>nvptx-none --without-cuda-driver --enable-checking<span class="token operator">=</span>release --build<span class="token operator">=</span>x86_64-linux-gnu --host<span class="token operator">=</span>x86_64-linux-gnu --target<span class="token operator">=</span>x86_64-linux-gnu
+Thread model: posix
+gcc version <span class="token number">8.3</span>.0 <span class="token punctuation">(</span>Uos <span class="token number">8.3</span>.0.3-3+rebuild<span class="token punctuation">)</span> 
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-E&apos;</span> <span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld.i&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+ /usr/lib/gcc/x86_64-linux-gnu/8/cc1 -E -quiet -v -imultiarch x86_64-linux-gnu helloWorld.c -o helloWorld.i -mtune<span class="token operator">=</span>generic -march<span class="token operator">=</span>x86-64
+ignoring nonexistent directory <span class="token string">&quot;/usr/local/include/x86_64-linux-gnu&quot;</span>
+ignoring nonexistent directory <span class="token string">&quot;/usr/lib/gcc/x86_64-linux-gnu/8/../../../../x86_64-linux-gnu/include&quot;</span>
+<span class="token comment">#include &quot;...&quot; search starts here:</span>
+<span class="token comment">#include &lt;...&gt; search starts here:</span>
+ /usr/lib/gcc/x86_64-linux-gnu/8/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-linux-gnu/8/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+<span class="token assign-left variable">COMPILER_PATH</span><span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
+<span class="token assign-left variable">LIBRARY_PATH</span><span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/lib/:/lib/x86_64-linux-gnu/:/lib/<span class="token punctuation">..</span>/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/<span class="token punctuation">..</span>/lib/:/usr/lib/gcc/x86_64-linux-gnu/8/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/:/lib/:/usr/lib/
+<span class="token assign-left variable">COLLECT_GCC_OPTIONS</span><span class="token operator">=</span><span class="token string">&apos;-E&apos;</span> <span class="token string">&apos;-o&apos;</span> <span class="token string">&apos;helloWorld.i&apos;</span> <span class="token string">&apos;-v&apos;</span> <span class="token string">&apos;-mtune=generic&apos;</span> <span class="token string">&apos;-march=x86-64&apos;</span>
+</code></pre>
+<p>&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x4F9D;&#x7136;&#x662F;&#x4F7F;&#x7528;<code>cc1</code>:</p>
+<pre class="language-"><code class="lang-bash">/usr/lib/gcc/x86_64-linux-gnu/8/cc1 -E -quiet -v -imultiarch x86_64-linux-gnu helloWorld.c -o helloWorld.i -mtune<span class="token operator">=</span>generic -march<span class="token operator">=</span>x86-64
+</code></pre>
+<p>&#x548C;&#x524D;&#x9762;<code>helloWorld.c</code>&#x5230;&#x7F16;&#x8BD1;&#x751F;&#x6210;<code>cfIwQTj.s</code>&#x65F6;&#x5BF9;&#x6BD4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">/usr/lib/gcc/x86_64-linux-gnu/8/cc1 -quiet -v -imultiarch x86_64-linux-gnu helloWorld.c -quiet -dumpbase helloWorld.c -mtune<span class="token operator">=</span>generic -march<span class="token operator">=</span>x86-64 -auxbase helloWorld -version -o /tmp/ccfIwQTj.s
+</code></pre>
+<p>&#x4ECE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>cc1</code>&#x5728;<strong>&#x9884;&#x5904;&#x7406;</strong>&#x65F6;&#x52A0;&#x4E86;<code>-E</code>&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;<code>cc1</code>&#x52A0;&#x4E86;<code>-E</code>&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x53EA;&#x505A;&#x9884;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0D;&#x52A0;&#x65F6;<code>-E</code>&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x9884;&#x5904;&#x7406;&#x548C;&#x7F16;&#x8BD1;&#x540C;&#x65F6;&#x5B8C;&#x6210;&#xFF0C;&#x6240;&#x4EE5;&#x5BFC;&#x81F4;&#x53EA;&#x6709;3&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x53EA;&#x662F;<strong>&#x9884;&#x5904;&#x7406;</strong>&#x548C;<strong>&#x7F16;&#x8BD1;</strong>&#x7531;<code>cc1</code>&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#x4E86;&#x3002;</p>
+<h2 id="&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;"><a name="&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;" class="anchor-navigation-ex-anchor" href="#&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4. &#x56DB;&#x4E2A;&#x6B65;&#x9AA4;</h2>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x91CD;&#x65B0;&#x6765;&#x5206;&#x89E3;&#x4E00;&#x4E0B;&#x8FD9;4&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x4F7F;&#x7528;&#x66F4;&#x7B80;&#x5355;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x63A7;&#x5236;&#x6BCF;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;&#x53C2;&#x8003;&#x6587;&#x7AE0;&#xFF1A;<a href="https://mp.weixin.qq.com/s/pXGAT8_VIvcA33fxcE9hmg" target="_blank">hello&#x7A0B;&#x5E8F;&#x662F;&#x5982;&#x4F55;&#x88AB;&#x7F16;&#x8BD1;&#x51FA;&#x6765;&#x7684;&#xFF1F;</a>&#x3002;</p>
+<p>&#x63D0;&#x793A;&#xFF1A;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x4E2D;&#x82E5;&#x52A0;&quot;-v&quot;&#x53C2;&#x6570;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5230;&#x7684;&#x5177;&#x4F53;&#x8C03;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x524D;&#x9762;&#x5404;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x5206;&#x89E3;&#x3002;</p>
+<h3 id="&#x9884;&#x5904;&#x7406;"><a name="&#x9884;&#x5904;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x9884;&#x5904;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.1. &#x9884;&#x5904;&#x7406;</h3>
+<p>&#x9884;&#x5904;&#x7406;&#x4E3B;&#x8981;&#x662F;&#x5904;&#x7406;&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x4EE5;#&#x5F00;&#x5934;&#x7684;&#x6307;&#x4EE4;&#xFF08;#pragma &#x9664;&#x5916;&#xFF09;&#xFF0C;&#x4F8B;&#x5982;&#x672C;&#x6587;hello world&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;#include&#xFF0C;&#x9884;&#x5904;&#x7406;&#x4E4B;&#x540E;&#x4F1A;&#x5C06;stdio.h&#x7684;&#x5185;&#x5BB9;&#x63D2;&#x5165;&#x5230;&#x9884;&#x5904;&#x7406;&#x6307;&#x4EE4;&#x7684;&#x4F4D;&#x7F6E;&#x3002;
+&#x60F3;&#x8981;&#x53EA;&#x751F;&#x6210;&#x9884;&#x5904;&#x7406;&#x4E4B;&#x540E;&#x7684;&#x5185;&#x5BB9;&#xFF0C;<code>gcc -E -o helloWorld.i helloWorld.c</code>&#x7B49;&#x6548;&#x4E8E;<code>cpp -o helloWorld.i helloWorld.c</code>&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">gcc -E -o helloWorld.i helloWorld.c     <span class="token comment"># -E&#x53C2;&#x6570;&#x8868;&#x793A;&#x53EA;&#x8FDB;&#x884C;&#x9884;&#x5904;&#x7406;</span>
+</code></pre>
+<p>&#x751F;&#x6210;&#x7684;helloWorld.i&#x5373;&#x4E3A;&#x9884;&#x5904;&#x7406;&#x4E4B;&#x540E;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x67E5;&#x770B;&#x91CC;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;stdio.h&#x7684;&#x4F4D;&#x7F6E;&#x88AB;&#x5176;&#x5B9E;&#x9645;&#x5185;&#x5BB9;&#x6240;&#x66FF;&#x4EE3;&#x3002;&#x9884;&#x5904;&#x7406;&#x4E4B;&#x540E;&#xFF0C;&#x6CE8;&#x91CA;&#x5185;&#x5BB9;&#x4E5F;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x5B8F;&#x5B9A;&#x4E49;&#x4F1A;&#x88AB;&#x5C55;&#x5F00;&#x3002;</p>
+<p><strong>&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x6280;&#x80FD;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x8FDB;&#x884C;&#x9884;&#x5904;&#x7406;&#xFF0C;&#x518D;&#x67E5;&#x770B;&#x5176;&#x9884;&#x5904;&#x7406;&#x540E;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6765;&#x5FEB;&#x901F;&#x6392;&#x9519;&#x548C;&#x7406;&#x89E3;&#x4EE3;&#x7801;&#x3002;</strong></p>
+<h3 id="&#x7F16;&#x8BD1;"><a name="&#x7F16;&#x8BD1;" class="anchor-navigation-ex-anchor" href="#&#x7F16;&#x8BD1;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.2. &#x7F16;&#x8BD1;</h3>
+<p>&#x9884;&#x5904;&#x7406;&#x4E4B;&#x540E;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x751F;&#x6210;&#x7684;&#x9884;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x8BED;&#x4E49;&#x5206;&#x6790;&#xFF0C;&#x6700;&#x7EC8;&#x4EA7;&#x751F;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x8BF4;&#x767D;&#x70B9;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#x5C06;C&#x4EE3;&#x7801;&#x201C;&#x7FFB;&#x8BD1;&#x201D;&#x6210;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x3002;&#x8BE5;&#x8FC7;&#x7A0B;&#x662F;&#x6838;&#x5FC3;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x8F83;&#x590D;&#x6742;&#x7684;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">gcc -S -o helloWorld.s helloWorld.c     <span class="token comment"># -S&#x53C2;&#x6570;&#x8868;&#x793A;&#x53EA;&#x5230;&#x751F;&#x6210;&#x6C47;&#x7F16;&#x4E3A;&#x6B62;</span>
+</code></pre>
+<p>&#x751F;&#x6210;&#x7684;&#x6C47;&#x7F16;&#x4EE3;&#x7801;<code>helloWorld.s</code>&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-asm">        .file   &quot;helloWorld.c&quot;
+        .text
+        .section        .rodata
+.LC0:
+        .string &quot;Hello World!&quot;
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        .cfi_startproc
+        pushq   %rbp
+        .cfi_def_cfa_offset 16
+        .cfi_offset 6, -16
+        movq    %rsp, %rbp
+        .cfi_def_cfa_register 6
+        subq    $16, %rsp
+        movl    %edi, -4(%rbp)
+        movq    %rsi, -16(%rbp)
+        movl    $.LC0, %edi
+        call    puts
+        movl    $0, %eax
+        leave
+        .cfi_def_cfa 7, 8
+        ret
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .ident  &quot;GCC: (Uos 8.3.0.3-3+rebuild) 8.3.0&quot;
+        .section        .note.GNU-stack,&quot;&quot;,@progbits
+</code></pre>
+<h3 id="&#x6C47;&#x7F16;"><a name="&#x6C47;&#x7F16;" class="anchor-navigation-ex-anchor" href="#&#x6C47;&#x7F16;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.3. &#x6C47;&#x7F16;</h3>
+<p>&#x6C47;&#x7F16;&#x662F;&#x5C06;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x7FFB;&#x8BD1;&#x6210;&#x673A;&#x5668;&#x53EF;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x751F;&#x6210;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x3002;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x8F83;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x51E0;&#x4E4E;&#x53EA;&#x662F;&#x6309;&#x7167;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x548C;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x8FDB;&#x884C;&#x4E00;&#x4E00;&#x7FFB;&#x8BD1;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x83B7;&#x5F97;&#x6C47;&#x7F16;&#x540E;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">gcc -c -o helloWorld.o helloWorld.c     <span class="token comment"># -c&#x53C2;&#x6570;&#x8868;&#x793A;&#x53EA;&#x5230;&#x751F;&#x6210;&#x673A;&#x5668;&#x53EF;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x8FDB;&#x884C;&#x94FE;&#x63A5;</span>
+</code></pre>
+<h3 id="&#x94FE;&#x63A5;"><a name="&#x94FE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#&#x94FE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.4. &#x94FE;&#x63A5;</h3>
+<p>&#x94FE;&#x63A5;&#x662F;&#x4EE5;&#x67D0;&#x79CD;&#x65B9;&#x5F0F;&#x5C06;&#x5404;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x6574;&#x4E2A;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x751F;&#x6210;&#x6700;&#x540E;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x7684;hello&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x4E86;printf&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#x4E8E;helloWorld.o&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5B58;&#x5728;&#x4E8E;libc.so&#x6216;libc.a&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x94FE;&#x63A5;&#x5C06;&#x5B83;&#x4EEC;&#x878D;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">gcc -o helloWorld.o helloWorld.c
+</code></pre>
+<p><strong>&#x5728;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x94FE;&#x63A5;&#x4FE1;&#x606F;&#x6765;&#x786E;&#x5B9A;&#xFF0C;&#x94FE;&#x63A5;&#x90A3;&#x4E9B;&#x5916;&#x90E8;&#x5E93;&#xFF0C;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;</strong></p>
+<h2 id="&#x603B;&#x7ED3;"><a name="&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>1.5. &#x603B;&#x7ED3;</h2>
+<p>&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x5206;&#x4E3A;4&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x5C06;.c&#x6E90;&#x7A0B;&#x5E8F;&#x9884;&#x5904;&#x7406;&#x4E3A;.i&#x6587;&#x4EF6;</li>
+<li>&#x7F16;&#x8BD1;&#x5668;&#x5C06;.i&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x6210;.s&#x6C47;&#x7F16;&#x7A0B;&#x5E8F;</li>
+<li>&#x6C47;&#x7F16;&#x5668;&#x5C06;.s&#x6C47;&#x7F16;&#x7A0B;&#x5E8F;&#x7F16;&#x8BD1;&#x6210;.o&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x76EE;&#x6807;&#x6587;&#x4EF6;</li>
+<li>&#x94FE;&#x63A5;&#x5668;&#x5C06;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x6210;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</li>
+</ul>
+<p><strong>&#x5728;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&quot;-v&quot;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x8BE6;&#x7EC6;&#x7684;&#x67E5;&#x770B;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</strong></p>
+<h2 id="one-more-thing&#xFF1A;android-ndk&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><a name="one-more-thing&#xFF1A;android-ndk&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#one-more-thing&#xFF1A;android-ndk&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>1.6. One more thing&#xFF1A;Android NDK&#x4E2D;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;</h2>
+<h3 id="&#x793A;&#x4F8B;&#x4EE3;&#x7801;"><a name="&#x793A;&#x4F8B;&#x4EE3;&#x7801;" class="anchor-navigation-ex-anchor" href="#&#x793A;&#x4F8B;&#x4EE3;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>1.6.1. &#x793A;&#x4F8B;&#x4EE3;&#x7801;</h3>
+<p><a href="https://github.com/chenls/Android-Native-Development/tree/main/source/helloWorld/jni/" target="_blank">jni</a>&#x5DE5;&#x7A0B;&#x5728;&#x4E2D;&#xFF0C;&#x540C;&#x6837;&#x7684;&quot;Hello World&quot;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF0C;&#x589E;&#x52A0;&#x4E86;ndk&#x7F16;&#x8BD1;&#x811A;&#x672C;<a href="https://github.com/chenls/Android-Native-Development/tree/main/source/helloWorld/jni/Application.mk" target="_blank">Application.mk</a>&#x3001;<a href="https://github.com/chenls/Android-Native-Development/tree/main/source/helloWorld/jni/Android.mk" target="_blank">Android.mk</a>&#xFF0C;&#x8FDB;&#x5165;jni&#x76EE;&#x5F55;&#x4E2D;&#x4F7F;&#x7528;<code>ndk-build</code>&#x7F16;&#x8BD1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">chenls@chenls-PC:jni$ ndk-build
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Compile        <span class="token builtin class-name">:</span> helloWorld <span class="token operator">&lt;</span><span class="token operator">=</span> helloWorld.c
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Executable     <span class="token builtin class-name">:</span> helloWorld
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Install        <span class="token builtin class-name">:</span> helloWorld <span class="token operator">=</span><span class="token operator">&gt;</span> libs/arm64-v8a/helloWorld
+</code></pre>
+<p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank">ndk-build &#x811A;&#x672C;</a>&#x6587;&#x6863;&#x4E2D;&#x63D0;&#x5230;&#x53C2;&#x6570;<code>V=1</code>&#x542F;&#x52A8;&#x6784;&#x5EFA;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x8FD9;&#x91CC;&#x5C31;&#x8DDF;gcc&#x4E2D;-v&#x7C7B;&#x4F3C;&#xFF0C;&#x6211;&#x4EEC;&#x8BD5;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">chenls@chenls-PC:jni$ ndk-build <span class="token assign-left variable">V</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token function">rm</span> -f /home/chenls/Desktop/Android-Native-Development/source/helloWorld/libs/arm64-v8a/*
+<span class="token function">rm</span> -f /home/chenls/Desktop/Android-Native-Development/source/helloWorld/libs/arm64-v8a/gdbserver
+<span class="token function">rm</span> -f /home/chenls/Desktop/Android-Native-Development/source/helloWorld/libs/arm64-v8a/gdb.setup
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Compile        <span class="token builtin class-name">:</span> helloWorld <span class="token operator">&lt;</span><span class="token operator">=</span> helloWorld.c
+<span class="token function">rm</span> -f /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o
+/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -MMD -MP -MF /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o.d -target aarch64-none-linux-android26 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -D_FORTIFY_SOURCE<span class="token operator">=</span><span class="token number">2</span> -fpic -O2 -DNDEBUG  -I/home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni -fstack-protector  -DANDROID  -nostdinc++ -Wformat -Werror<span class="token operator">=</span>format-security  -c  /home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni/helloWorld.c -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Executable     <span class="token builtin class-name">:</span> helloWorld
+/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -Wl,--gc-sections -Wl,-rpath-link<span class="token operator">=</span>/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/26 -Wl,-rpath-link<span class="token operator">=</span>/home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o -lgcc -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -latomic -Wl,--exclude-libs,libatomic.a -target aarch64-none-linux-android26 -no-canonical-prefixes    -Wl,--build-id   -nostdlib++ -Wl,--no-undefined -Wl,--fatal-warnings  -lc -lm -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/helloWorld
+<span class="token punctuation">[</span>arm64-v8a<span class="token punctuation">]</span> Install        <span class="token builtin class-name">:</span> helloWorld <span class="token operator">=</span><span class="token operator">&gt;</span> libs/arm64-v8a/helloWorld
+<span class="token function">install</span> -p /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/helloWorld /home/chenls/Desktop/Android-Native-Development/source/helloWorld/libs/arm64-v8a/helloWorld
+/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip --strip-unneeded  /home/chenls/Desktop/Android-Native-Development/source/helloWorld/libs/arm64-v8a/helloWorld
+</code></pre>
+<p>&#x540C;&#x6837;&#x6765;&#x6D88;&#x5316;&#x4E00;&#x4E0B;&#xFF0C;&#x5171;&#x5206;&#x6210;&#x4E86;&#x4E24;&#x6B65;&#xFF1A;</p>
+<h4 id="&#x4F7F;&#x7528;clang&#x751F;&#x6210;o&#x6587;&#x4EF6;"><a name="&#x4F7F;&#x7528;clang&#x751F;&#x6210;o&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;clang&#x751F;&#x6210;o&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528;clang&#x751F;&#x6210;.o&#x6587;&#x4EF6;</h4>
+<p>&#x5728;&#x8FD9;&#x6BB5;&#x4FE1;&#x606F;&#x4E2D;&#x641C;&#x7D22;<code>helloWorld.c</code>&#xFF0C;&#x4F1A;&#x770B;&#x5230;:</p>
+<pre class="language-"><code class="lang-bash">/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -MMD -MP -MF /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o.d -target aarch64-none-linux-android26 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -D_FORTIFY_SOURCE<span class="token operator">=</span><span class="token number">2</span> -fpic -O2 -DNDEBUG  -I/home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni -fstack-protector  -DANDROID  -nostdinc++ -Wformat -Werror<span class="token operator">=</span>format-security  -c  /home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni/helloWorld.c -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>clang</code>&#x5C06;<code>helloWorld.c</code>&#x9884;&#x5904;&#x7406;&#x3001;&#x7F16;&#x8BD1;&#x3001;&#x6C47;&#x7F16;&#x751F;&#x6210;<code>helloWorld.o</code>&#x6587;&#x4EF6;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;clang&#x94FE;&#x63A5;"><a name="&#x4F7F;&#x7528;clang&#x94FE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;clang&#x94FE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528;clang++&#x94FE;&#x63A5;</h4>
+<p>&#x7EE7;&#x7EED;&#x67E5;&#x627E;<code>helloWorld.o</code>&#xFF0C;&#x4F1A;&#x770B;&#x5230;:</p>
+<pre class="language-"><code class="lang-bash">/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -Wl,--gc-sections -Wl,-rpath-link<span class="token operator">=</span>/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/26 -Wl,-rpath-link<span class="token operator">=</span>/home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o -lgcc -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -latomic -Wl,--exclude-libs,libatomic.a -target aarch64-none-linux-android26 -no-canonical-prefixes    -Wl,--build-id   -nostdlib++ -Wl,--no-undefined -Wl,--fatal-warnings  -lc -lm -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/helloWorld
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;<code>clang++</code>&#x5C06;<code>helloWorld.o</code>&#x94FE;&#x63A5;&#x751F;&#x6210;<code>helloWorld</code>&#x3002;</p>
+<h3 id="clang&#x7684;&#x4F7F;&#x7528;"><a name="clang&#x7684;&#x4F7F;&#x7528;" class="anchor-navigation-ex-anchor" href="#clang&#x7684;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>1.6.2. clang&#x7684;&#x4F7F;&#x7528;</h3>
+<p>&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;ndk&#x7F16;&#x8BD1;&#x65F6;&#x4F7F;&#x7528;&#x4E86;clang&#xFF0C;&#x800C;clang&#x548C;gcc&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#xFF0C;&#x5B83;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x770B;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><strong>&#x63D0;&#x793A;&#xFF1A;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x4E2D;&#x82E5;&#x52A0;&quot;-v&quot;&#x53C2;&#x6570;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5230;&#x7684;&#x5177;&#x4F53;&#x8C03;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x548C;gcc&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#x3002;</strong></p>
+<h4 id="clang&#x9884;&#x5904;&#x7406;"><a name="clang&#x9884;&#x5904;&#x7406;" class="anchor-navigation-ex-anchor" href="#clang&#x9884;&#x5904;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>clang&#x9884;&#x5904;&#x7406;</h4>
+<p>&#x53EA;&#x9700;&#x8981;&#x628A;&#x751F;&#x6210;&#x6587;&#x4EF6;<code>helloWorld.o</code>&#x6539;&#x6210;<code>helloWorld.i</code>&#xFF0C;&#x7136;&#x540E;&#x52A0;&#x4E0A;<code>-E</code>&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x9884;&#x5904;&#x7406;&#x6587;&#x4EF6;:</p>
+<pre class="language-"><code class="lang-bash">/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -MMD -MP -MF /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o.d -target aarch64-none-linux-android26 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -D_FORTIFY_SOURCE<span class="token operator">=</span><span class="token number">2</span> -fpic -O2 -DNDEBUG  -I/home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni -fstack-protector  -DANDROID  -nostdinc++ -Wformat -Werror<span class="token operator">=</span>format-security  -c  /home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni/helloWorld.c -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.i -E
+</code></pre>
+<h4 id="clang&#x7F16;&#x8BD1;"><a name="clang&#x7F16;&#x8BD1;" class="anchor-navigation-ex-anchor" href="#clang&#x7F16;&#x8BD1;"><i class="fa fa-link" aria-hidden="true"></i></a>clang&#x7F16;&#x8BD1;</h4>
+<p>&#x53EA;&#x9700;&#x8981;&#x628A;&#x751F;&#x6210;&#x6587;&#x4EF6;<code>helloWorld.o</code>&#x6539;&#x6210;<code>helloWorld.s</code>&#xFF0C;&#x7136;&#x540E;&#x52A0;&#x4E0A;<code>-S</code>&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6C47;&#x7F16;&#x6587;&#x4EF6;:</p>
+<pre class="language-"><code class="lang-bash">/home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -MMD -MP -MF /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.o.d -target aarch64-none-linux-android26 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /home/chenls/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -D_FORTIFY_SOURCE<span class="token operator">=</span><span class="token number">2</span> -fpic -O2 -DNDEBUG  -I/home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni -fstack-protector  -DANDROID  -nostdinc++ -Wformat -Werror<span class="token operator">=</span>format-security  -c  /home/chenls/Desktop/Android-Native-Development/source/helloWorld/jni/helloWorld.c -o /home/chenls/Desktop/Android-Native-Development/source/helloWorld/obj/local/arm64-v8a/objs/helloWorld/helloWorld.s -S
+</code></pre>
+<h3 id="ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;"><a name="ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>1.6.3. ndk-build&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;</h3>
+<p>ndk&#x7F16;&#x8BD1;&#x65F6;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86;clang&#xFF0C;&#x800C;clang&#x4E0E;gcc&#x76F8;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x53C2;&#x6570;&#x6765;&#x8DDF;&#x8E2A;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> &#x4F7F;&#x7528;<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">&#x77E5;&#x8BC6;&#x5171;&#x4EAB; &#x7F72;&#x540D;-&#x76F8;&#x540C;&#x65B9;&#x5F0F;&#x5171;&#x4EAB; 4.0&#x534F;&#x8BAE;</a>&#x53D1;&#x5E03; </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-04-18 15:02:59 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"编译过程","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","expandable-chapters","copy-code-button","page-footer-ex","anchor-navigation-ex","expandable-chapters-small","prism","-highlight","-lunr","-search","search-pro","splitter"],"ignores":["_book","node_modules"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"}},"page-footer-ex":{"copyright":"使用[知识共享 署名-相同方式共享 4.0协议](https://creativecommons.org/licenses/by-sa/4.0/)发布","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"编译过程/编译过程.md","mtime":"2021-04-18T15:02:59.996Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-18T15:03:58.958Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
