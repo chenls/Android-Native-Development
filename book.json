@@ -7,6 +7,7 @@
     },
 	"author":"陈六生",
 	"plugins" : [
+		"theme-hqbook",
 		"theme-comscore",
 		"expandable-chapters",
 		"copy-code-button",

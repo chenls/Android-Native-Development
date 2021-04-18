@@ -4,6 +4,12 @@
 
 Android Native开发就是指是使用C和C++等语言以原生代码形式，来实现应用的各个部分。而Android是基于Linux内核的操作系统，因此在Android上使用C/C++开发和Linux非常类似。本系列文章主要介绍C/C++程序编译、运行、调试等相关知识，会从Linux和Android两个平台同时对比分析。
 
+使用Gitbook提供更加友好的阅读体验：
+
+GitHub Pages 地址：https://chenls.github.io/Android-Native-Development/
+
+Gitee Pages 地址：https://cqupt.gitee.io/android-native-development/
+
 ## 目录
 
 * 编译原理
