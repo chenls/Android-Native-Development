@@ -6,8 +6,8 @@
     ],
     "pluginsConfig": {
         "theme-hqbook":{
-            "favicon": "./logo.png",
-            "logo":"./logo.png",
+            "favicon": "https://chenls.github.io/Android-Native-Development/logo.png",
+            "logo":"https://chenls.github.io/Android-Native-Development/logo.png",
 			"copyButtons": true,
 			"copyLines": true,
 			"dragSplitter": true,
